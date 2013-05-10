@@ -56,8 +56,8 @@ def sign_urls():
     if not is_authorized(request):
         abort(403)
     try:
-        segments = int(request.args['segments'])
-        duration = int(request.args['duration'])
+        segments = int(request.args.get('segments', '1'))
+        duration = int(request.args.get('duration', 3600))
         hostname = request.args['hostname']
         if '/' in hostname:
             raise ValueError("no slashes in hostnames")
