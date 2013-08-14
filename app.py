@@ -43,7 +43,7 @@ def sign(method, expires, container_name, object_name):
         get_tempurl_secret(),
         "\n".join([method, str(expires), url]),
         hashlib.sha1).hexdigest()
-    return url + "?temp_url=sig={sig}&temp_url_expires={exp}".format(
+    return url + "?temp_url_sig={sig}&temp_url_expires={exp}".format(
         sig=sig,
         exp=expires)
 
